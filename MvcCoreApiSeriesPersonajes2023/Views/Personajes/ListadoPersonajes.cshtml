@@ -1,0 +1,34 @@
+﻿@model List<Personaje>
+<h1>Listado de personajes</h1>
+
+<a asp-controller="Series" asp-action="Details" asp-route-idserie=@ViewData["ID"] class="btn btn-danger">Volver</a>
+<br/>
+<table class="table table-dark">
+    <thead>
+        <tr>
+
+            <th>
+                Personaje
+            </th>
+            <th>
+                Imagen
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (Personaje personaje in Model) {
+        <tr>
+
+            <td>
+                    @personaje.Nombre
+            </td>
+            <td>
+                    <img src="@personaje.Imagen" height="100" width="100" />
+            </td>
+
+        </tr>
+}
+    </tbody>
+</table>
