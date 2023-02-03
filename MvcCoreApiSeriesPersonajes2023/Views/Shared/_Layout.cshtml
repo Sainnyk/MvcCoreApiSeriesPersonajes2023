@@ -29,8 +29,10 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Personajes" asp-action="UpdatePersonajeSerie">Modificar personaje</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Series" asp-action="ListadoSeries">Series</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Series" asp-action="ListadoSeries">Series 1</a>
                         </li>
+                        @await Component.InvokeAsync("MenuSeries")
+
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>

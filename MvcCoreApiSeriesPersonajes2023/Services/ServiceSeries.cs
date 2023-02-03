@@ -79,7 +79,7 @@ namespace MvcCoreApiSeriesPersonajes2023.Services
         {
             using (HttpClient client = new HttpClient())
             {
-                string request = "api/personajes/"+idpersonaje+"/"+idserie;
+                string request = "api/personajes/updatepersonajeserie/"+idpersonaje+"/"+idserie;
                 client.BaseAddress = new Uri(this.UrlApi);
                 client.DefaultRequestHeaders.Clear();
 
