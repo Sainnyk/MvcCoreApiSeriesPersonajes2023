@@ -1,9 +1,12 @@
+using MvcCoreApiSeriesPersonajes2023.Helpers;
 using MvcCoreApiSeriesPersonajes2023.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews(); 
+builder.Services.AddControllersWithViews();
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddTransient<HelperPathProvider>();
 
 string url = builder.Configuration.GetValue<string>("UrlsApi:ApiSeries");
 builder.Services.AddTransient<ServiceSeries>(x => new ServiceSeries(url));
