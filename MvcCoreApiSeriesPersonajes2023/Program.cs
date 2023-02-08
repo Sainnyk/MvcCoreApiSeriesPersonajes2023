@@ -1,7 +1,20 @@
+using Azure.Storage.Blobs;
 using MvcCoreApiSeriesPersonajes2023.Helpers;
 using MvcCoreApiSeriesPersonajes2023.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+
+//Recuperamos las claves
+string azurekey = builder.Configuration.GetConnectionString("azurekey");
+string personajerContainer = builder.Configuration.GetValue<string>("AzureContainers:personajescontainer");
+//Creamos nuestro cliente para acceder al servicio de Azure Blobs mediante nuestras claves
+BlobServiceClient blobServiceClient = new BlobServiceClient(azurekey);
+//Creamos nuestro Container Client con el nombre del contenedor
+BlobContainerClient containerClient = blobServiceClient.GetBlobContainerClient(personajerContainer);
+
+builder.Services.AddTransient<BlobContainerClient>(x=>containerClient);
+//Ponemos nuestro Service Storage Blobs en la aplicacion
+builder.Services.AddTransient<ServiceStorageBlobs>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
